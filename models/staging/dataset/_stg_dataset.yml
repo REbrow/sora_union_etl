@@ -1,0 +1,71 @@
+version: 2
+
+models:
+  - name: stg_float_allocation
+    description: "Float"
+    columns:
+    - name: client
+      description: "Client ID"
+      tests:
+        - not_null
+    - name: project
+      description: "Project"
+      tests:
+      - not_null
+    - name: role
+      description: "Role"
+      tests:
+      - not_null
+    - name: name
+      description: "Client Name"
+      tests:
+      - not_null
+    - name: task
+      description: "Task"
+      tests:
+      - not_null
+    - name: start_date
+      description: "Start Date"
+      tests:
+      - not_null
+    - name: end_date
+      description: "End Date"
+      tests:
+        - not_null
+    - name: estimated_hours
+      description: "Estimated Hours"
+      tests:
+        - not_null
+
+
+  - name: stg_clickup
+    description: "Clickup"
+    columns:
+    - name: client
+      description: "Client"
+      tests:
+        - not_null
+    - name: project
+      description: "Project"
+      tests:
+      - not_null
+    - name: name
+      description: "Name"
+      tests:
+      - not_null
+    - name: task
+      description: "Task"
+      tests:
+      - not_null
+    - name: task_date
+      description: "Task Date"
+      tests:
+        - not_null
+    - name: hours
+      description: "Hours"
+      tests:
+        - not_null
+    - name: billable
+      description: "Billable"
+      tests:
+        - not_null
