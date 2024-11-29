@@ -1,0 +1,5 @@
+version 2:
+
+models:
+  - name: task_detail
+    description: 'Task Details: Joined outcome of Clickup & Float Allocation Datasets'

@@ -14,8 +14,12 @@ WITH clickup as (
         cast("Date" as date) as task_date,
         cast("Hours" as float) as hours,
         "Note"::text as note, 
-        cast("Billable" as boolean) as billable
-    from {{ ref('seed_clickup') }}
+        case 
+            when "Billable" = 'Yes' then true
+            when "Billable" = 'No' then false
+            else null end 
+        as billable
+    from {{ ref('clickup') }}
 )
 
 select 

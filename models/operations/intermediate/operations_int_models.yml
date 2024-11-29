@@ -1,0 +1,13 @@
+version 2:
+
+models:
+  - name: int_client
+    description: 'Client Entity'
+  - name: int_employee
+    description: Employee Entity
+  - name: int_project
+    description: Project Entity
+  - name: int_task
+    description: Task Entity
+  - name: int_task_summary
+    description: 'Task Summary: Client, Project, Employee and Task details for analytics model'

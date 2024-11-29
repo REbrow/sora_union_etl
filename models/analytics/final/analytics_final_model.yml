@@ -1,0 +1,5 @@
+version 2:
+
+models:
+  - name: task_details
+    description: One Big Table model containing relationship details of Clickup & Float Allocation datasets

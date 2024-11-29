@@ -1,0 +1,6 @@
+version 2:
+
+models:
+  - name: int_task_performance
+    description: 'Project Employee Utilization: Aggregation of employees 
+      logged hours and utilization status for different projects for clients'
