@@ -2,8 +2,8 @@ WITH employee as (
     select * from {{ ref("int_employee") }}
 ),
 
-task_summary as (
-    select * from {{ ref("int_task_summary") }}
+project_detail as (
+    select * from {{ ref("int_project_detail") }}
 ),
 summary as (
 select 
@@ -16,7 +16,7 @@ select
   estimated_hours,
   sum(hours) as logged_hours,
   count(task_date) as days_worked
-from task_summary 
+from project_detail 
 group by 1,2,3,4,5,6,7
 order by 1
 )

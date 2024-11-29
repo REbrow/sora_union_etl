@@ -1,36 +1,26 @@
-WITH employees as (
-    select * from {{ ref("int_employee") }}
+WITH float_allocation as (
+    select * from {{ ref("stg_float_allocation") }}
 ),
-clients as (
-    select * from {{ ref("int_client") }}
-),
-projects as (
-    select * from {{ ref("int_project") }}
-),
-tasks as (
-    select * from {{ ref("int_task") }}
-),
-task_summary as (
-    select * from {{ ref("int_task_summary") }}
+clickup as (
+    select * from {{ ref("stg_clickup") }}
 )
 
 select 
-    t.client_id,
-    t.project_id,
-    t.employee_id,
-    t.task_id,
-    r.task_date,
-    r.hours,
-    r.note,
-    r.billable
-from task_summary r 
-left join clients c on lower(c.client) = lower(r.client)
-left join employees e on lower(e.employee_name) = lower(r.employee_name)
-left join projects p on lower(p.project) = lower(r.project)
-left join tasks t on lower(t.task) = lower(r.task) 
-    and t.client_id = c.client_id 
-    and t.project_id = p.project_id 
-    and t.employee_id = e.employee_id
-group by 1,2,3,4,5,6,7,8
-
-
+    f.client,
+    f.project,
+    f.employee_name,
+    f.employee_role,
+    f.task,
+    f.start_date,
+    f.end_date,
+    f.estimated_hours,
+    c.task_date,
+    c.hours,
+    c.note,
+    c.billable
+from clickup c 
+left join float_allocation f 
+    on lower(c.employee_name) = lower(f.employee_name) 
+    and lower(c.client) = lower(f.client)
+    and lower(c.project) = lower(f.project)
+    --and lower(c.task) = lower(f.task) #2 records having different task in both dataset
