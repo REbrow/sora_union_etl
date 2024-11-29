@@ -5,19 +5,19 @@ models:
     description: "Float"
     columns:
     - name: client
-      description: "Client ID"
+      description: "Client Name"
       tests:
         - not_null
     - name: project
       description: "Project"
       tests:
       - not_null
-    - name: role
-      description: "Role"
+    - name: employee_role
+      description: "Employee Role"
       tests:
       - not_null
-    - name: name
-      description: "Client Name"
+    - name: employee_name
+      description: "Employee Name"
       tests:
       - not_null
     - name: task
@@ -49,8 +49,8 @@ models:
       description: "Project"
       tests:
       - not_null
-    - name: name
-      description: "Name"
+    - name: employee_name
+      description: "Employee Name"
       tests:
       - not_null
     - name: task

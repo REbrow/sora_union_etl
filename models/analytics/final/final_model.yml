@@ -1,1 +1,36 @@
 version 2:
+
+models:
+  - name: clients
+    description: "Clients Dimenion"
+    
+  - name: projects
+    description: "Projects Dimension"
+    columns:
+    - name: client_id
+      tests:
+        - relationships:
+            to: ref('clients')
+            field: client_id
+  - name: employees
+    description: "Employees Dimension"
+  - name: tasks
+    description: "Tasks Dimention"
+    columns:
+      - name: project_id
+        tests:
+          - relationships:
+              to: ref('projects')
+              field: project_id
+      - name: client_id
+        tests:
+          - relationships:
+              to: ref('clients')
+              field: client_id
+      - name: employee_id
+        tests:
+        - relationships:
+            to: ref('employees')
+            field: employee_id
+  - name: task_summary
+  - name: project_details
