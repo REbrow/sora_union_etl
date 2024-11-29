@@ -36,10 +36,19 @@ models:
         +materialized: ephemeral
       final: 
         +materialized: table
-        +schema: prod
-      staging:
+        +schema: analytics
+    operations:
+      intermediate:
         +materialized: ephemeral
-        +schema: staging
+      final: 
+        +materialized: table
+        +schema: operations
+    intermediate:
+      +materialized: view
+      +schema: staging
+    staging:
+      +materialized: table
+      +schema: staging
   +persist_docs:
     relation: true
     columns: true

@@ -1,11 +1,11 @@
-WITH project_detail as (
-    select * from {{ ref("int_project_detail") }}
+WITH task_detail as (
+    select * from {{ ref("int_task_detail") }}
 ),
 employees as (
     select 
         distinct employee_name,
         employee_role
-    from project_detail
+    from task_detail
 )
 
 select 

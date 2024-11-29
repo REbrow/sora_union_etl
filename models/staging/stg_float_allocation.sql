@@ -15,7 +15,7 @@ WITH float_allocation as (
         cast("Start Date" as date) as start_date,
         cast("End Date" as date) as end_date,
         cast("Estimated Hours" as int) as estimated_hours 
-    from {{ ref('seed_float_allocation') }}
+    from {{ ref('float_allocation') }}
 )
 
 select 

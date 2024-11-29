@@ -1,0 +1,124 @@
+version 2:
+
+models:
+  - name: clients
+    description: "Clients Dimenion"
+    columns:
+      - name: client_id
+        tests:
+          - unique
+          - not_null
+      - name: client
+        tests:
+          - not_null
+  - name: projects
+    description: "Projects Dimension"
+    columns:
+      - name: project_id
+        tests:
+          - unique
+          - not_null
+      - name: project
+        tests:
+          - not_null
+      - name: start_date
+        tests:
+          - not_null
+      - name: end_date
+        tests:
+          - not_null
+      - name: client_id
+        tests:
+          - relationships:
+              to: ref('clients')
+              field: client_id
+  - name: employees
+    description: "Employees Dimension"
+    columns:
+      - name: employee_id
+        tests: 
+          - unique
+          - not_null
+      - name: employee_name
+        tests:
+          - not_null
+      - name: employee_role
+        tests:
+          - not_null
+  - name: tasks
+    description: "Tasks Dimention"
+    columns:
+      - name: task_id
+        tests:
+          - unique
+          - not_null
+      - name: client_id
+        tests:
+          - relationships:
+              to: ref('clients')
+              field: client_id
+      - name: project_id
+        tests:
+          - relationships:
+              to: ref('projects')
+              field: project_id
+      - name: employee_id
+        tests:
+        - relationships:
+            to: ref('employees')
+            field: employee_id
+      - name: task
+        tests:
+          - not_null
+      - name: start_date
+        tests:
+          - not_null
+      - name: end_date
+        tests:
+          - not_null
+      - name: estimated_hours
+        tests:
+          - not_null
+  - name: task_summary
+    description: Fact table of Clickup & Float Allocation
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
+      - name: billable
+        tests:
+          - name: boolean_check
+            test_name: accepted_values
+            values:
+              - true
+              - false
+      - name: note
+        tests:
+          - not_null
+      - name: hours
+        tests:
+          - not_null
+      - name: task_date
+        tests:
+          - not_null
+      - name: task_id
+        tests:
+          - relationships:
+              to: ref('tasks')
+              field: task_id
+      - name: client_id
+        tests:
+          - relationships:
+              to: ref('clients')
+              field: client_id
+      - name: project_id
+        tests:
+          - relationships:
+              to: ref('projects')
+              field: project_id
+      - name: employee_id
+        tests:
+        - relationships:
+            to: ref('employees')
+            field: employee_id

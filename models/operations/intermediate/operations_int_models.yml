@@ -1,9 +1,6 @@
 version 2:
 
 models:
-  - name: int_employee_project_utilization
-    description: 'Project Employee Utilization: Aggregation of employees 
-      logged hours and utilization status for different projects for clients'
   - name: int_client
     description: 'Client Entity'
   - name: int_employee
@@ -12,7 +9,5 @@ models:
     description: Project Entity
   - name: int_task
     description: Task Entity
-  - name: project_detail
-    description: Project Details
   - name: int_task_summary
     description: 'Task Summary: Client, Project, Employee and Task details for analytics model'

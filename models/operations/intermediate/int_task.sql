@@ -1,5 +1,5 @@
-WITH project_detail as (
-    select * from {{ ref('int_project_detail') }}
+WITH task_detail as (
+    select * from {{ ref('int_task_detail') }}
 ),
 projects as (
     select * from {{ ref('int_project') }}
@@ -16,7 +16,7 @@ tasks as (
         start_date,
         end_date,
         estimated_hours
-    from project_detail
+    from task_detail
 )
 
 select 
