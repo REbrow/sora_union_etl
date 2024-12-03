@@ -1,9 +1,9 @@
 # SORA UNION 
 
 ETL Project 
-
-### Using the starter project
-
+##### Data Warehouse
+* PostgreSQL
+### Setting up and starting project  
 Try running the following commands:
 - dbt seed
 - dbt run
