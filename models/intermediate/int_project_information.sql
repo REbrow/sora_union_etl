@@ -8,8 +8,8 @@ clickup as (
 select 
     f.client,
     f.project,
-    f.employee_name,
-    f.employee_role,
+    f.staff_name,
+    f.staff_role as role,
     f.task,
     f.start_date,
     f.end_date,
@@ -20,7 +20,7 @@ select
     c.billable
 from clickup c 
 left join float_allocation f 
-    on lower(c.employee_name) = lower(f.employee_name) 
+    on lower(c.staff_name) = lower(f.staff_name) 
     and lower(c.client) = lower(f.client)
     and lower(c.project) = lower(f.project)
     --and lower(c.task) = lower(f.task) #2 records having different task in both dataset

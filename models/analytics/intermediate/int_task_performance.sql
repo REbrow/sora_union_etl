@@ -1,16 +1,12 @@
-WITH employee as (
-    select * from {{ ref("int_employee") }}
-),
-
-task_detail as (
-    select * from {{ ref("int_task_detail") }}
+WITH task_detail as (
+    select * from {{ ref("int_project_information") }}
 ),
 summary as (
     select 
         client,
         project,
-        employee_name,
-        employee_role,
+        staff_name,
+        role,
         estimated_hours,
         min(task_date) as start_date,
         max(task_date) as end_date,

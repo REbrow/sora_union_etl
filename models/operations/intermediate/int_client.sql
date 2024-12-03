@@ -1,5 +1,5 @@
 WITH task_detail as (
-    select * from {{ ref("int_task_detail") }}
+    select * from {{ ref("int_project_information") }}
 ),
 clients as (
     select distinct client from task_detail

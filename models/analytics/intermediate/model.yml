@@ -1,0 +1,12 @@
+version 2:
+
+models:
+  - name: int_task_performance
+    description: 'Project Employee Utilization: Aggregation of employees 
+      logged hours and utilization status for different projects for clients'
+  - name: int_dim_project
+    description: Relationship between clients and projects
+  - name: int_dim_staff
+    description: Relationship between staff and roles
+  - name: int_dim_task
+    description: Relationship between task and task categories
