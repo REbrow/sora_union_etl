@@ -1,0 +1,91 @@
+version 2:
+
+models:
+  - name: fct_task_information
+    description: Fact table containing measures
+    columns:
+      - name: project_id
+        tests: 
+         - relationships:
+              to: ref('dim_projects')
+              field: project_id
+      - name: staff_id
+        tests:
+          - relationships:
+              to: ref('dim_staffs')
+              field: staff_id
+      - name: task_id
+        tests:
+          - relationships:
+              to: ref('dim_tasks')
+              field: task_id
+      - name: task_date
+        tests:
+          - not_null
+      - name: hours
+        tests:
+          - not_null
+      - name: note 
+        tests: 
+          - not_null
+      - name: billable
+        tests:
+          - name: boolean_check
+            test_name: accepted_values
+            values:
+              - true
+              - false
+  - name: dim_projects
+    description: Project Dimension
+    columns: 
+      - name: project_id
+        tests:
+          - not_null
+          - unique
+      - name: client
+        tests:
+          - not_null
+      - name: project
+        tests:
+          - not_null
+      - name: start_date
+        tests:
+          - not_null
+      - name: end_date
+        tests:
+          - not_null
+  - name: dim_tasks
+    description: Task Dimension
+    columns:
+      - name: task_id
+        tests:
+          - not_null
+          - unique
+      - name: task
+        tests:
+          - not_null
+      - name: start_date
+        tests:
+          - not_null
+      - name: end_date
+        tests:
+          - not_null
+      - name: estimated_hours
+        tests:
+          - not_null
+  - name: dim_staffs
+    description: Staff Dimension
+    columns:
+      - name: staff_id
+        tests:
+          - not_null
+          - unique
+      - name: staff_name
+        tests:
+          - not_null
+      - name: role
+        tests:
+          - not_null
+
+  - name: task_performance
+    description: Task Performance

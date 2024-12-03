@@ -9,7 +9,7 @@ WITH clickup as (
     select 
         "Client"::text as client,
         "Project"::text as project,
-        "Name"::text as employee_name,
+        "Name"::text as staff_name,
         "Task"::text as task,
         cast("Date" as date) as task_date,
         cast("Hours" as float) as hours,

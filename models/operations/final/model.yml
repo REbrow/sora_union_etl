@@ -6,8 +6,8 @@ models:
     columns:
       - name: client_id
         tests:
-          - unique
           - not_null
+          - unique
       - name: client
         tests:
           - not_null
@@ -32,17 +32,37 @@ models:
           - relationships:
               to: ref('clients')
               field: client_id
-  - name: employees
-    description: "Employees Dimension"
+  - name: roles
+    description: Roles Dimension
     columns:
-      - name: employee_id
+      - name: role_id
+        tests:
+          - unique
+          - not_null
+      - name: role
+  - name: staffs
+    description: "Staffs Dimension"
+    columns:
+      - name: staff_id
         tests: 
           - unique
           - not_null
-      - name: employee_name
+      - name: staff_name
         tests:
           - not_null
-      - name: employee_role
+      - name: role_id
+        tests:
+          - relationships:
+              to: ref('roles')
+              field: role_id
+  - name: task_categories
+    description: "Task Categories Dimension"
+    columns:
+      - name: category_id
+        tests:
+          - unique
+          - not_null
+      - name: category
         tests:
           - not_null
   - name: tasks
@@ -52,24 +72,16 @@ models:
         tests:
           - unique
           - not_null
-      - name: client_id
-        tests:
-          - relationships:
-              to: ref('clients')
-              field: client_id
       - name: project_id
         tests:
           - relationships:
               to: ref('projects')
               field: project_id
-      - name: employee_id
+      - name: staff_id
         tests:
         - relationships:
-            to: ref('employees')
-            field: employee_id
-      - name: task
-        tests:
-          - not_null
+            to: ref('staffs')
+            field: staff_id
       - name: start_date
         tests:
           - not_null
@@ -79,10 +91,10 @@ models:
       - name: estimated_hours
         tests:
           - not_null
-  - name: task_summary
+  - name: task_information
     description: Fact table of Clickup & Float Allocation
     columns:
-      - name: id
+      - name: task_information_id
         tests:
           - unique
           - not_null
@@ -107,18 +119,4 @@ models:
           - relationships:
               to: ref('tasks')
               field: task_id
-      - name: client_id
-        tests:
-          - relationships:
-              to: ref('clients')
-              field: client_id
-      - name: project_id
-        tests:
-          - relationships:
-              to: ref('projects')
-              field: project_id
-      - name: employee_id
-        tests:
-        - relationships:
-            to: ref('employees')
-            field: employee_id
+      

@@ -1,0 +1,17 @@
+version 2:
+
+models:
+  - name: int_client
+    description: 'Client Entity'
+  - name: int_staff
+    description: Staff Entity
+  - name: int_role
+    description: Role Entity
+  - name: int_project
+    description: Project Entity
+  - name: int_task
+    description: Task Entity
+  - name: int_task_category
+    description: Task Category Entity
+  - name: int_task_information
+    description: 'Task Information: Client, Project, Staff, Role, Task, and Task Category details for analytics model'

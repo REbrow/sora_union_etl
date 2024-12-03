@@ -12,12 +12,12 @@ models:
       description: "Project"
       tests:
       - not_null
-    - name: employee_role
-      description: "Employee Role"
+    - name: staff_role
+      description: "Staff Role"
       tests:
       - not_null
-    - name: employee_name
-      description: "Employee Name"
+    - name: staff_name
+      description: "Staff Name"
       tests:
       - not_null
     - name: task
@@ -49,8 +49,8 @@ models:
       description: "Project"
       tests:
       - not_null
-    - name: employee_name
-      description: "Employee Name"
+    - name: staff_name
+      description: "Staff Name"
       tests:
       - not_null
     - name: task
